@@ -1,4 +1,4 @@
-package org.example;
+package ProjetoFinalFluxoDeCaixaEControleDeEstoque;
 
 import javax.swing.*;
 
