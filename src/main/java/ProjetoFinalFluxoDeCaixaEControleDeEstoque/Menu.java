@@ -34,7 +34,7 @@ public class Menu {
 
                 if (produtoJaCadastrado == true) {
                     do {
-                        JOptionPane.showMessageDialog(null, "“O produto que será adicionado já foi cadastrado. Por favor, insira um novo produto!");
+                        JOptionPane.showMessageDialog(null, "O produto que será adicionado já foi cadastrado. Por favor, insira um novo produto!");
                         nomeDoProduto = JOptionPane.showInputDialog(null, "Qual o nome do produto?");
                         valorDoProduto = Double.parseDouble(JOptionPane.showInputDialog(null, "Qual o valor desse produto?"));
 
@@ -209,7 +209,9 @@ public class Menu {
         while(escolhaDasOpcoesDoMenuDeFluxoDeCaixa != 3) {
             if (escolhaDasOpcoesDoMenuDeFluxoDeCaixa == adicionarProdutos) {
 
-                codigoDoProduto = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual o produto deseja comprar?"));
+                GerenciadorDeEstoque.listarProdutos(estoqueDeProdutos);
+
+                codigoDoProduto = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual o código do produto que deseja comprar?"));
 
                 produtoParaCompra = estoqueDeProdutos.get(codigoDoProduto);
 
@@ -220,12 +222,14 @@ public class Menu {
 
             } else if (escolhaDasOpcoesDoMenuDeFluxoDeCaixa == listaDeCompras) {
 
-                FluxoDeCaixa.carrinhoDeCompras(carrinhoDeCompras, produtoParaCompra, codigoDoProduto);
+                FluxoDeCaixa.carrinhoDeCompras(carrinhoDeCompras);
 
+                String[] opcoesDoMenuDeFluxoDeCaixa = {"Adicionar produto", "Carrinho","Finalizar compra", "Voltar"};
+                escolhaDasOpcoesDoMenuDeFluxoDeCaixa = JOptionPane.showOptionDialog(null, "Selecione o que deseja fazer", "Funcionalidades", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDoMenuDeFluxoDeCaixa, opcoesDoMenuDeFluxoDeCaixa[0]);
 
             }else if(escolhaDasOpcoesDoMenuDeFluxoDeCaixa == finalizarCompra){
 
-                FluxoDeCaixa.carrinhoDeCompras(carrinhoDeCompras, produtoParaCompra, codigoDoProduto);
+                FluxoDeCaixa.carrinhoDeCompras(carrinhoDeCompras);
 
                 JOptionPane.showMessageDialog(null, "Sua compra deu um total de R$" + FluxoDeCaixa.calcularTotalValorProdutos(carrinhoDeCompras));
 
@@ -233,6 +237,10 @@ public class Menu {
 
                 if(confirmarCompra == JOptionPane.YES_OPTION){
                     JOptionPane.showMessageDialog(null,"Obrigado por comprar conosco!");
+
+                    String[] opcoesDoMenuDeFluxoDeCaixa = {"Adicionar produto", "Carrinho","Finalizar compra", "Voltar"};
+                    escolhaDasOpcoesDoMenuDeFluxoDeCaixa = JOptionPane.showOptionDialog(null, "Selecione o que deseja fazer", "Funcionalidades", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDoMenuDeFluxoDeCaixa, opcoesDoMenuDeFluxoDeCaixa[0]);
+
                 }else{
 
                     String[] opcoesDoMenuDeFluxoDeCaixa = {"Adicionar produto", "Carrinho","Finalizar compra", "Voltar"};

@@ -11,6 +11,7 @@ public class Main {
 
 
         HashMap<Integer,Produto> estoqueDeProdutos = new HashMap<>();
+        HashMap<Integer, Produto> carrinhoDeCompras = new HashMap<>();
         Produto produto = new Produto();
 
         String nomeDoProduto = "";
@@ -30,7 +31,6 @@ public class Main {
 
                 int escolhaDasOpcoesDoMenuDeGestaoDeEstoque = JOptionPane.showOptionDialog(null, "Selecione o que deseja fazer", "Funcionalidades", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDoMenuDeGestaoDeEstoque, opcoesDoMenuDeGestaoDeEstoque[0]);
 
-
                 Menu.menuDeGestaoDeEstoque(estoqueDeProdutos,produto,escolhaDasOpcoesDoMenuDeGestaoDeEstoque,nomeDoProduto,valorDoProduto,codigoDoProduto);
 
 
@@ -39,8 +39,6 @@ public class Main {
                 String[] opcoesDoMenuDeFluxoDeCaixa = {"Adicionar produto", "Carrinho","Finalizar compra", "Voltar"};
 
                 int escolhaDasOpcoesDoMenuDeFluxoDeCaixa = JOptionPane.showOptionDialog(null, "Selecione o que deseja fazer", "Funcionalidades", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDoMenuDeFluxoDeCaixa, opcoesDoMenuDeFluxoDeCaixa[0]);
-
-                HashMap<Integer, Produto> carrinhoDeCompras = new HashMap<>();
 
                 Menu.menuDeFluxoDeCaixa(estoqueDeProdutos,carrinhoDeCompras,produto,codigoDoProduto,escolhaDasOpcoesDoMenuDeFluxoDeCaixa);
             }

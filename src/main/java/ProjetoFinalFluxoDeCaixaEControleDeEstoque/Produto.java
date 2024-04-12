@@ -6,19 +6,19 @@ public class Produto {
 
     private double valorDoProduto;
 
-    private int códigoDoProduto;
+    private int codigoDoProduto;
 
     public Produto(){}
 
-    public Produto(String nomeDoProduto, double valorDoProduto, int códigoDoProduto) {
+    public Produto(String nomeDoProduto, double valorDoProduto, int codigoDoProduto) {
         this.nomeDoProduto = nomeDoProduto;
         this.valorDoProduto = valorDoProduto;
-        this.códigoDoProduto = códigoDoProduto;
+        this.codigoDoProduto = codigoDoProduto;
     }
 
 
-    public void setCodigoDoProduto(int códigoDoProduto) {
-        this.códigoDoProduto = códigoDoProduto;
+    public void setCodigoDoProduto(int codigoDoProduto) {
+        this.codigoDoProduto = codigoDoProduto;
     }
 
     public void setNomeDoProduto(String nomeDoProduto) {
@@ -38,7 +38,7 @@ public class Produto {
     }
 
     public int getCodigoDoProduto() {
-        return códigoDoProduto;
+        return codigoDoProduto;
     }
 
     @Override
