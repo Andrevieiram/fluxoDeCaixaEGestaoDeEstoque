@@ -213,6 +213,24 @@ public class Menu {
 
                 codigoDoProduto = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual o código do produto que deseja comprar?"));
 
+                boolean codigoParaCompraExiste = Verificacao.verificarSeProdutoExiste(estoqueDeProdutos, codigoDoProduto);
+
+                if (!codigoParaCompraExiste) {
+
+                    do {
+                        JOptionPane.showMessageDialog(null, "O código que você inseriu não possui nenhum produto cadastrado nele, insira um novo código");
+                        GerenciadorDeEstoque.listarProdutos(estoqueDeProdutos);
+                        codigoDoProduto = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual o código do produto que deseja comprar?"));
+
+                        codigoParaCompraExiste = estoqueDeProdutos.containsKey(codigoDoProduto);
+                    } while (!codigoParaCompraExiste);
+
+
+                } else {
+
+                }
+
+
                 produtoParaCompra = estoqueDeProdutos.get(codigoDoProduto);
 
                 FluxoDeCaixa.adicionarAoCarrinho(estoqueDeProdutos, carrinhoDeCompras, produtoParaCompra, codigoDoProduto);
@@ -223,6 +241,8 @@ public class Menu {
             } else if (escolhaDasOpcoesDoMenuDeFluxoDeCaixa == listaDeCompras) {
 
                 FluxoDeCaixa.carrinhoDeCompras(carrinhoDeCompras);
+                JOptionPane.showMessageDialog(null, "Sua carrinho de compras possui um total de R$" + FluxoDeCaixa.calcularTotalValorProdutos(carrinhoDeCompras));
+
 
                 String[] opcoesDoMenuDeFluxoDeCaixa = {"Adicionar produto", "Carrinho","Finalizar compra", "Voltar"};
                 escolhaDasOpcoesDoMenuDeFluxoDeCaixa = JOptionPane.showOptionDialog(null, "Selecione o que deseja fazer", "Funcionalidades", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoesDoMenuDeFluxoDeCaixa, opcoesDoMenuDeFluxoDeCaixa[0]);
